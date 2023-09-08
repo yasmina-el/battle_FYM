@@ -39,7 +39,9 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($formData['email'])) {
-        $errors['email'] = "Veuillez renseigner votre email";
+        $errors['email'] = "Veuillez renseigner votre adresse mail";
+    } elseif (!filter_var($formData['email'], FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "L'adresse mail n'est pas valide";
     }
 
     // Si les données sont valides, insérez-les dans la base de données
