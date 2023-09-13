@@ -83,6 +83,7 @@ function shuffle(array) {
   
   function showCard(card) {
     card.classList.add('show');
+    console.log(card.firstChild.className);
   
   }
   
@@ -106,6 +107,7 @@ function shuffle(array) {
         cardsMatch(html1, html2);
     } else {
         cardsDontMatch(html1, html2);
+        
     }
   }
   
@@ -114,6 +116,7 @@ function shuffle(array) {
     card2.classList.add('match');
     match++;
     if (match === 8) {
+      window.location.replace("./form.php/?resp="+movesCounter);
         // win();
         //indique que toute les cartes ont été retourné
     }
@@ -177,26 +180,7 @@ function shuffle(array) {
   
   }
 
-  function insertScore(params) {
-    var mysql = require('mysql');
-
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "test"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  var sql = "INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')";
-  con.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("1 record inserted");
-  });
-});
-  }
+  
   
   // let restart = document.querySelector(".restart");
   // restart.addEventListener("click", restartGame, false);
