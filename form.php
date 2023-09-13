@@ -1,6 +1,6 @@
 <?php
 
-$dsn = 'mysql:dbname=battle_FYM;host=127.0.0.1;charset=utf8mb4';
+$dsn = 'mysql:dbname=test;host=127.0.0.1;charset=utf8mb4';
 $user = 'root';
 $password = '';
 
@@ -13,8 +13,9 @@ function insertUser(array $data)
     $data['firstname'] = htmlspecialchars($data['firstname']);
     $data['lastname'] = htmlspecialchars($data['lastname']);
     $data['email'] = htmlspecialchars($data['email']);
+    $data['moves_number']=htmlspecialchars($_GET['resp']);
 
-    $sql = "INSERT INTO user (firstname, lastname, email) VALUES (:firstname, :lastname, :email)";
+    $sql = "INSERT INTO user (firstname, lastname, email, moves_number) VALUES (:firstname, :lastname, :email, :moves_number)";
     $stmt = $dbh->prepare($sql);
     $stmt->execute($data);
 
