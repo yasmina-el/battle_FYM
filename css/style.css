@@ -14,7 +14,23 @@ html {
   }
   
   body {
-    font-family: 'Concert One', 'Coda', san-serif, cursive;
+    font-family: 'Concert One', 'Coda', sans-serif, cursive;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header h1 {
+    margin: 10px 0;
+  }
+  header h2 {
+    margin: 10px 0;
+  }
+  header h3 {
+    margin: 14px 0;
   }
   
   .container {
@@ -28,11 +44,15 @@ html {
     text-align: left;
     width: 500px;
     padding: 0;
-    margin: 0;
+    margin: 10px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+  }
+
+  .moves {
+    display: none;
   }
   
   .stars {
@@ -164,6 +184,13 @@ html {
     font-size: 1.2em;
     cursor: pointer;
     margin-top: 25px;
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
   }
   
   @media screen and (max-width: 600px) {
