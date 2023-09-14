@@ -1,6 +1,6 @@
 <?php
 
-$dsn = 'mysql:dbname=test;host=127.0.0.1;charset=utf8mb4';
+$dsn = 'mysql:dbname=battle_fym;host=127.0.0.1;charset=utf8mb4';
 $user = 'root';
 $password = '';
 
@@ -51,12 +51,14 @@ if (isset($_POST['submit'])) {
     }
 }
 
+$movesNumber = isset($_GET['resp']) ? htmlspecialchars($_GET['resp']) : 0;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Flip Card Memory Game</title>
+    <title>ADVERGAME RUBGY</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -66,9 +68,12 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container" style="display:flex; justify-content:center; align-items:center; width:100%; height:100%;">
-        <div class="mb-5">
-            <h4>Veuillez vous enregistrer pour connaitre votre score</h4>
+    <div class="container" style="display:flex; flex-direction:column; justify-content:center; align-items:center">
+        <div class="mt-5 d-flex justify-center flex-column">
+            <h3>Félicitations ! Vous avez gagné en <?= $movesNumber; ?> mouvements !</h3>
+        </div>
+        <div class="mb-5 d-flex justify-center flex-column">
+            <h4>Veuillez vous enregistrer pour participer au tirage au sort</h4>
         </div>
 
         <form method="POST">
