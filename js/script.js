@@ -29,8 +29,8 @@ function shuffle(array) {
   // window.addEventListener("click", windowOnClick);
   
   let cardTest = [];
-  let cards = ["diamond", "diamond", "plane", "plane", "anchor", "anchor", "bolt", "bolt", "leaf", "leaf"
-    , "bicycle", "bicycle", "cube", "cube", "bomb", "bomb"];
+  let cards = ["chabal.png", "chabal.png", "equipe.png", "equipe.png", "equipe1.png", "equipe1.png", "equipe2.png", "equipe2.png", "equipe5.png", "equipe5.png"
+    , "equipe4.png", "equipe4.png", "equipe6.png", "equipe6.png", "equipe7.png", "equipe7.png"];
   
   let shuffledCards = shuffle(cards);
 
@@ -38,14 +38,12 @@ function shuffle(array) {
     for (let card of shuffledCards) {
         const li = document.createElement("LI");
         li.classList.toggle("card");
-        const i = document.createElement("i");
+        const img = document.createElement("img");
         //toggle vérifie si la class fa exist si non la rajoute 
-        i.classList.toggle("fa");
-      
-        i.classList.toggle("fa-" + card);
-        
+        img.src=("../images/" + card);
+            
         const deck = document.querySelector('.deck');
-        li.appendChild(i);
+        li.appendChild(img);
         deck.appendChild(li);
   
     }
@@ -118,7 +116,7 @@ function shuffle(array) {
     if (match === 8) {
       window.location.replace("./form.php/?resp="+movesCounter);
         // win();
-        //indique que toute les cartes ont été retourné
+        //indique que toute les cartes ont été retournées
     }
   }
   

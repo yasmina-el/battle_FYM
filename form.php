@@ -1,8 +1,8 @@
 <?php
 
-$dsn = 'mysql:dbname=battle_fym;host=127.0.0.1;charset=utf8mb4';
+$dsn = 'mysql:dbname=battle_fym;host=127.0.0.1:8889;charset=utf8mb4';
 $user = 'root';
-$password = '';
+$password = 'root';
 
 $dbh = new PDO($dsn, $user, $password);
 
