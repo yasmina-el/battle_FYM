@@ -24,6 +24,23 @@ function insertUser(array $data)
     return $form;
 }
 
+function controlUser(array $data)
+{
+
+    $dbh = $GLOBALS['dbh'];
+
+    $data['firstname'] = htmlspecialchars($data['firstname']);
+    $data['lastname'] = htmlspecialchars($data['lastname']);
+    $data['email'] = htmlspecialchars($data['email']);
+
+    $sql = "SELECT * FROM user WHERE user.firstname =:firstname AND user.lastname=:lastname AND user.email=:email";
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute($data);
+    $user=$stmt->fetch();
+    return $user;
+    
+}
+
 $errors = [];
 
 if (isset($_POST['submit'])) {
@@ -47,7 +64,13 @@ if (isset($_POST['submit'])) {
 
     // Si les données sont valides, insérez-les dans la base de données
     if (empty($errors)) {
-        $form = insertUser($formData);
+        
+        if(controlUser($formData)){
+            $errors['email'] = "Vous vous êtes déjà enregistré";
+        } else {
+            $form = insertUser($formData);
+            $conf="Enregistrement réussi";
+        }
     }
 }
 
@@ -96,6 +119,10 @@ $movesNumber = isset($_GET['resp']) ? htmlspecialchars($_GET['resp']) : 0;
             <input type="email" class="form-control" id="email" name="user[email]">
             <?php if (!empty($errors['email'])) : ?>
                 <p class="text-danger"><?php echo $errors['email']; ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($conf)) : ?>
+                <p class="text-success"><?php echo $conf; ?></p>
             <?php endif; ?>
         </div>
         <div class="d-flex justify-content-center align-items-center">
