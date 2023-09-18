@@ -90,7 +90,7 @@ header h3 {
 
 .deck {
   /* background: linear-gradient(135deg, rgba(207, 197, 229, 1) 0%, rgba(163, 154, 204, 1) 36%, rgba(79, 71, 169, 1) 100%); */
-  background: linear-gradient(135deg, rgba(207, 197, 229, 1) 0%, rgb(213, 210, 228) 36%, rgb(197, 194, 222) 100%);
+  /* background: linear-gradient(135deg, rgba(207, 197, 229, 1) 0%, rgb(213, 210, 228) 36%, rgb(197, 194, 222) 100%); */
   margin: 0;
   width: 612px;
   min-height: 500px;
