@@ -2,7 +2,7 @@ let W = window.innerWidth;
 let H = window.innerHeight;
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
-const maxConfettis = 150;
+const maxConfettis = 50;
 const particles = [];
 
 const possibleColors = [
