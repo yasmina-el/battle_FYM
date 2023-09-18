@@ -66,12 +66,12 @@ if (isset($_POST['submit'])) {
 
     // Si les données sont valides, insérez-les dans la base de données
     if (empty($errors)) {
-        
-        if(controlUser($formData)){
+
+        if (controlUser($formData)) {
             $errors['email'] = "Vous vous êtes déjà enregistré";
         } else {
             $form = insertUser($formData);
-            $conf="Enregistrement réussi";
+            $conf = "Enregistrement réussi";
         }
     }
 }
@@ -81,6 +81,7 @@ $movesNumber = isset($_GET['resp']) ? htmlspecialchars($_GET['resp']) : 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>ADVERGAME RUBGY</title>
@@ -92,42 +93,47 @@ $movesNumber = isset($_GET['resp']) ? htmlspecialchars($_GET['resp']) : 0;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="css/congratulations.css">
 </head>
+
 <body>
-    <div class="container" style="display:flex; flex-direction:column; justify-content:center; align-items:center">
-        <div class="mt-5 d-flex justify-center flex-column">
-            <h3>Félicitations ! Vous avez gagné en <?= $movesNumber; ?> mouvements !</h3>
-        </div>
-        <div class="mb-5 d-flex justify-center flex-column">
-            <h4>Veuillez vous enregistrer pour participer au tirage au sort</h4>
-        </div>
+    <canvas id="canvas">
 
-        <form method="POST">
-        <div class="form-group mb-3">
-            <label for="firstname">Prénom</label>
-            <input type="text" class="form-control" id="firstname" name="user[firstname]">
-            <?php if (!empty($errors['firstname'])) : ?>
-                <p class="text-danger"><?php echo $errors['firstname']; ?></p>
-            <?php endif; ?>
-        </div>
-        <div class="form-group mb-3">
-            <label for="lastname">Nom</label>
-            <input type="text" class="form-control" id="lastname" name="user[lastname]">
-            <?php if (!empty($errors['lastname'])) : ?>
-                <p class="text-danger"><?php echo $errors['lastname']; ?></p>
-            <?php endif; ?>
-        </div>
-        <div class="form-group mb-3">
-            <label for="email">Adresse mail</label>
-            <input type="email" class="form-control" id="email" name="user[email]">
-            <?php if (!empty($errors['email'])) : ?>
-                <p class="text-danger"><?php echo $errors['email']; ?></p>
-            <?php endif; ?>
+        <div class="container" style="display:flex; flex-direction:column; justify-content:center; align-items:center">
+            <div class="mt-5 d-flex justify-center flex-column">
+                <h3>Félicitations ! Vous avez gagné en <?= $movesNumber; ?> mouvements !</h3>
+            </div>
+            <div class="mb-5 d-flex justify-center flex-column">
+                <h4>Veuillez vous enregistrer pour participer au tirage au sort</h4>
+            </div>
+            <form method="POST">
+                <div class="form-group mb-3">
+                    <label for="firstname">Prénom</label>
+                    <input type="text" class="form-control" id="firstname" name="user[firstname]">
+                    <?php if (!empty($errors['firstname'])) : ?>
+                        <p class="text-danger"><?php echo $errors['firstname']; ?></p>
+                    <?php endif; ?>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="lastname">Nom</label>
+                    <input type="text" class="form-control" id="lastname" name="user[lastname]">
+                    <?php if (!empty($errors['lastname'])) : ?>
+                        <p class="text-danger"><?php echo $errors['lastname']; ?></p>
+                    <?php endif; ?>
+                </div>
 
-            <?php if (!empty($conf)) : ?>
-                <p class="text-success"><?php echo $conf; ?></p>
-            <?php endif; ?>
-        </div>
-        <div class="form-group mb-3">
+                <div class="form-group mb-3">
+                    <label for="email">Adresse mail</label>
+                    <input type="email" class="form-control" id="email" name="user[email]">
+                    <?php if (!empty($errors['email'])) : ?>
+                        <p class="text-danger"><?php echo $errors['email']; ?></p>
+                    <?php endif; ?>
+
+                    <?php if (!empty($conf)) : ?>
+                        <p class="text-success"><?php echo $conf; ?></p>
+                    <?php endif; ?>
+                </div>
+
+                <div class="form-group mb-3">
                     <input type="checkbox" class="form-check-input" id="accept" name="user[accept]">
                     <label for="accept">J’accepte l’usage de mes coordonnées pour l’envoi de courriers électroniques promotionnels.</label>
                     <?php if (!empty($errors['accept'])) : ?>
@@ -136,11 +142,15 @@ $movesNumber = isset($_GET['resp']) ? htmlspecialchars($_GET['resp']) : 0;
                 </div>
 
 
-        <div class="d-flex justify-content-center align-items-center">
-            <button type="submit" name="submit" class="btn btn-success w-50 h-100">Enregistrer</button>
+                <div class="d-flex justify-content-center align-items-center">
+                    <button type="submit" name="submit" class="btn btn-success w-50 h-100">Enregistrer</button>
+                </div>
+            </form>
         </div>
-        </form>
-    </div>    
+    </canvas>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/congratulations.js"></script>
 </body>
+
 </html>
