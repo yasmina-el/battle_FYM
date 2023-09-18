@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container backgroung">
         <header>
             <h1>MEMORY RUGBY</h1>
-            <h2>Tentez votre chance de gagner des lots en terminant le Memory</h2>
+            <h2>Tentez votre chance de gagner des lots en terminant le <strong>Memory</strong></h2>
             <h3>Rugby World Cup 2023</h3>
         </header>
 
